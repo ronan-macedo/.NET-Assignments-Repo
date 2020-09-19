@@ -15,7 +15,7 @@ namespace ConsoleApplication
             string name = "Ronan";
             string country = "Brazil";
 
-            Console.WriteLine($"\nMy name is {name}, I am form {country}.");
+            Console.WriteLine($"\nMy name is {name}, I am from {country}.");
 
             //Display current date
             /**
@@ -30,7 +30,7 @@ namespace ConsoleApplication
             DateTime chirstmasDate = DateTime.Parse(chirstmasDateValue, CultureInfo.CreateSpecificCulture("en-US"));
             TimeSpan daysUntilChristmas = chirstmasDate.Subtract(currentDate);
 
-            Console.WriteLine($"\nDays until Christmans: {daysUntilChristmas.TotalDays} days");
+            Console.WriteLine($"\nDays until Christmas: {daysUntilChristmas.TotalDays} days");
 
             //Window size calculator
             void windowCalculator() {
