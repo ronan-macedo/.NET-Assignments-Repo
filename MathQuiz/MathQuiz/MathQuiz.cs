@@ -95,6 +95,7 @@ namespace MathQuiz
             multiplier = randomizer.Next(2, 11);
             timesLeftLabel.Text = multiplicand.ToString();
             timesRightLabel.Text = multiplier.ToString();
+            product.Value = 0;
 
             // Fill in the division problem.
             divisor = randomizer.Next(2, 11);
@@ -111,6 +112,15 @@ namespace MathQuiz
 
             // Restart the timeLabel.BackColor
             timeLabel.BackColor = Color.Transparent;
+        }
+
+        /// <summary>
+        /// Count down the timeLeft
+        /// </summary>
+        public void CountDown()
+        {
+            timeLeft--;
+            timeLabel.Text = $"{timeLeft} seconds";
         }
 
         /// <summary>
@@ -157,8 +167,7 @@ namespace MathQuiz
                  * Display the new time left
                  * up updating the Time Left label.
                  */
-                timeLeft--;
-                timeLabel.Text = $"{timeLeft} seconds";
+                CountDown();
             }
             else if (timeLeft > 0)
             {
@@ -168,8 +177,7 @@ namespace MathQuiz
                  * and change the back color to red.
                  */
                 timeLabel.BackColor = Color.Red;
-                timeLeft--;
-                timeLabel.Text = $"{timeLeft} seconds";
+                CountDown();
             }
             else
             {
