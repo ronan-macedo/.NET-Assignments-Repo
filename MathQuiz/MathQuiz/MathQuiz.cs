@@ -108,6 +108,9 @@ namespace MathQuiz
             timeLeft = 30;
             timeLabel.Text = "30 seconds";
             timer1.Start();
+
+            // Restart the timeLabel.BackColor
+            timeLabel.BackColor = Color.Transparent;
         }
 
         /// <summary>
