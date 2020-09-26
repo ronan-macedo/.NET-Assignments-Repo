@@ -17,14 +17,14 @@ namespace ConsoleApplication
 
             Console.WriteLine($"\nMy name is {name}, I am from {country}.");
 
-            //Display current date
+            // Display current date
             /**
              * Using CultureInfo to override the system date/time local configuration 
              */
             string currentDateValue = DateTime.Now.ToString("d", CultureInfo.CreateSpecificCulture("en-US"));
             Console.WriteLine($"\nThe current date is {currentDateValue}.");
 
-            //Days until Christmans
+            // Days until Christmans
             string chirstmasDateValue = "12/25/2020";
             DateTime currentDate = DateTime.Parse(currentDateValue, CultureInfo.CreateSpecificCulture("en-US"));
             DateTime chirstmasDate = DateTime.Parse(chirstmasDateValue, CultureInfo.CreateSpecificCulture("en-US"));
@@ -32,8 +32,9 @@ namespace ConsoleApplication
 
             Console.WriteLine($"\nDays until Christmas: {daysUntilChristmas.TotalDays} days");
 
-            //Window size calculator
-            void windowCalculator() {
+            // Window size calculator
+            void windowCalculator()
+            {
                 double width, height, woodLength, glassArea;
                 string widthString, heightString;
 
