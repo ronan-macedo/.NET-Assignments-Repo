@@ -51,6 +51,7 @@
             this.txtTotal = new System.Windows.Forms.Label();
             this.txtDate = new System.Windows.Forms.Label();
             this.img = new System.Windows.Forms.Label();
+            this.btnAdd = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // btnBack
@@ -119,7 +120,7 @@
             this.lblDrawer.Name = "lblDrawer";
             this.lblDrawer.Size = new System.Drawing.Size(140, 26);
             this.lblDrawer.TabIndex = 12;
-            this.lblDrawer.Text = "Drawer(s):";
+            this.lblDrawer.Text = "DrawerCost(s):";
             this.lblDrawer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // lblMaterial
@@ -295,12 +296,27 @@
             this.img.Size = new System.Drawing.Size(200, 100);
             this.img.TabIndex = 29;
             // 
+            // btnAdd
+            // 
+            this.btnAdd.BackColor = System.Drawing.Color.White;
+            this.btnAdd.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btnAdd.ForeColor = System.Drawing.Color.SaddleBrown;
+            this.btnAdd.Location = new System.Drawing.Point(462, 408);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(150, 30);
+            this.btnAdd.TabIndex = 30;
+            this.btnAdd.Text = "&Confirm this Quote";
+            this.btnAdd.UseVisualStyleBackColor = false;
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
             // DisplayQuote
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(780, 457);
+            this.Controls.Add(this.btnAdd);
             this.Controls.Add(this.img);
             this.Controls.Add(this.txtDate);
             this.Controls.Add(this.txtTotal);
@@ -358,5 +374,6 @@
         private System.Windows.Forms.Label txtTotal;
         private System.Windows.Forms.Label txtDate;
         private System.Windows.Forms.Label img;
+        private System.Windows.Forms.Button btnAdd;
     }
 }

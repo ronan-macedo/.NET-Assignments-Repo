@@ -29,18 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(ViewAllQuotes));
-            this.lblDevelop = new System.Windows.Forms.Label();
             this.back = new System.Windows.Forms.Button();
+            this.dataView = new System.Windows.Forms.DataGridView();
+            ((System.ComponentModel.ISupportInitialize)(this.dataView)).BeginInit();
             this.SuspendLayout();
-            // 
-            // lblDevelop
-            // 
-            this.lblDevelop.AutoSize = true;
-            this.lblDevelop.Location = new System.Drawing.Point(12, 9);
-            this.lblDevelop.Name = "lblDevelop";
-            this.lblDevelop.Size = new System.Drawing.Size(102, 13);
-            this.lblDevelop.TabIndex = 0;
-            this.lblDevelop.Text = "Under Development";
             // 
             // back
             // 
@@ -51,10 +43,21 @@
             this.back.Margin = new System.Windows.Forms.Padding(3, 10, 3, 10);
             this.back.Name = "back";
             this.back.Size = new System.Drawing.Size(150, 30);
-            this.back.TabIndex = 7;
+            this.back.TabIndex = 1;
             this.back.Text = "&Return to Main Menu";
             this.back.UseVisualStyleBackColor = false;
             this.back.Click += new System.EventHandler(this.back_Click);
+            // 
+            // dataView
+            // 
+            this.dataView.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
+            this.dataView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataView.Location = new System.Drawing.Point(12, 12);
+            this.dataView.Name = "dataView";
+            this.dataView.ReadOnly = true;
+            this.dataView.RowHeadersWidthSizeMode = System.Windows.Forms.DataGridViewRowHeadersWidthSizeMode.AutoSizeToAllHeaders;
+            this.dataView.Size = new System.Drawing.Size(756, 383);
+            this.dataView.TabIndex = 0;
             // 
             // ViewAllQuotes
             // 
@@ -62,22 +65,22 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.BackColor = System.Drawing.SystemColors.ControlLight;
             this.ClientSize = new System.Drawing.Size(780, 457);
+            this.Controls.Add(this.dataView);
             this.Controls.Add(this.back);
-            this.Controls.Add(this.lblDevelop);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.Fixed3D;
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MaximizeBox = false;
             this.Name = "ViewAllQuotes";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Search Quotes";
+            this.Text = "View All Quotes";
+            this.Load += new System.EventHandler(this.ViewAllQuotes_Load);
+            ((System.ComponentModel.ISupportInitialize)(this.dataView)).EndInit();
             this.ResumeLayout(false);
-            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.Label lblDevelop;
         private System.Windows.Forms.Button back;
+        private System.Windows.Forms.DataGridView dataView;
     }
 }

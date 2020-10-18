@@ -176,7 +176,7 @@
             this.lblDraw.Name = "lblDraw";
             this.lblDraw.Size = new System.Drawing.Size(91, 27);
             this.lblDraw.TabIndex = 12;
-            this.lblDraw.Text = "Drawer(s):";
+            this.lblDraw.Text = "Drawer:";
             this.lblDraw.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // deskDrawers
@@ -222,9 +222,9 @@
             this.lblRush.Location = new System.Drawing.Point(59, 303);
             this.lblRush.Margin = new System.Windows.Forms.Padding(50, 25, 3, 0);
             this.lblRush.Name = "lblRush";
-            this.lblRush.Size = new System.Drawing.Size(103, 27);
+            this.lblRush.Size = new System.Drawing.Size(157, 27);
             this.lblRush.TabIndex = 19;
-            this.lblRush.Text = "Rush Days:";
+            this.lblRush.Text = "Estimate Delivery:";
             this.lblRush.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // cmbRushDays

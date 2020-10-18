@@ -15,11 +15,12 @@ namespace MegaDesk
 {
     public partial class AddQuote : Form
     {
+        #region AddQuote Properties
         private string Customer;
 
         private double AreaCost;
 
-        private double Drawer;
+        private double DrawerCost;
 
         private double MaterialCost;
 
@@ -28,6 +29,15 @@ namespace MegaDesk
         private double Total;
 
         private string Estimated;
+
+        private string MaterialType;
+
+        private double DeskWidth;
+
+        private double DeskDepth;
+
+        private double DeskDrawer;
+        #endregion
 
         public AddQuote()
         {
@@ -47,7 +57,8 @@ namespace MegaDesk
         {
             CalculateQuote();
 
-            DisplayQuote displayQuote = new DisplayQuote(Customer, AreaCost, Drawer, MaterialCost, RushDaysCost, Total, Estimated);
+            DisplayQuote displayQuote = new DisplayQuote(Customer, AreaCost, DrawerCost, MaterialCost, 
+                RushDaysCost, Total, Estimated, MaterialType, DeskWidth, DeskDepth, DeskDrawer);
             displayQuote.Tag = this;
             displayQuote.Show(this);           
         }
@@ -195,6 +206,7 @@ namespace MegaDesk
         }
         #endregion
 
+        #region Making the Calculations
         /// <summary>
         /// Calculates all the inputs and set the class properties
         /// to be displayed in the DisplayQuote.
@@ -220,11 +232,19 @@ namespace MegaDesk
             // Making all the calculations and setting other properties
             desk.CalcArea((int)deskWidth.Value, (int)deskDepth.Value);
 
+            DeskWidth = desk.DeskWidth;
+
+            DeskDepth = desk.DeskDepth;
+
             AreaCost = deskQuote.CalcAreaCost(desk.DeskArea);
 
-            Drawer = deskQuote.CalcDrawerCost(drawers);
+            DrawerCost = deskQuote.CalcDrawerCost(drawers);
+
+            DeskDrawer = desk.DeskDrawer;
 
             MaterialCost = deskQuote.CalcSufCost(material);
+
+            MaterialType = deskQuote.MaterialTypeDef(material);
 
             RushDaysCost = deskQuote.CalcAdditionalCost(rushDays, desk.DeskArea);
 
@@ -251,6 +271,7 @@ namespace MegaDesk
                 valueBox.Select(0, lengthOfAnswer);
             }
         }
+        #endregion
 
         private void AddQuote_Load(object sender, EventArgs e)
         {

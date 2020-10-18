@@ -1,7 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
+using System.IO;
 using System.Linq;
+using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 using System.Threading.Tasks;
@@ -11,7 +13,7 @@ namespace MegaDesk
 
     class DeskQuote
     {
-        #region DeskQuote Properties
+        #region DeskQuote Properties for Calculations
         public double SufMatCost { get; set; }
 
         public double AreaCost { get; set; }
@@ -20,15 +22,19 @@ namespace MegaDesk
 
         public double AdditionalCost { get; set; }
 
-        public double DeskQuoteTotal { get; set; }
-
-        public string CustomerName { get; set; }
+        public double DeskQuoteTotal { get; set; }       
 
         public DateTime CurrentDate { get; set; }
 
         public DateTime EstimateShip { get; set; }
-        
+        #endregion
+
+        #region DeskQuote Properties for Record
+        public string CustomerName { get; set; }
+
         public string DisplayDate { get; set; }
+
+        public string MaterialType { get; set; }
         #endregion
 
         public DeskQuote()
@@ -54,13 +60,45 @@ namespace MegaDesk
             _3days = 3
         }
 
-        #region DeskQuote Calculations
+        #region DeskQuote Calculations and Data Processing
+        /// <summary>
+        /// Defines the type of material used in the desk.
+        /// </summary>
+        /// <param name="material"></param>
+        /// <returns>MaterialType.</returns>
+        public string MaterialTypeDef(int material)
+        {
+            deskData.DeskSufMat = material;
+            string surfaceMaterial = "";
+
+            switch (material)
+            {
+                case 0:
+                    surfaceMaterial = "Laminate";
+                    break;
+                case 1:
+                    surfaceMaterial = "Oak";
+                    break;
+                case 2:
+                    surfaceMaterial = "Rosewood";
+                    break;
+                case 3:
+                    surfaceMaterial = "Veneer";
+                    break;
+                case 4:
+                    surfaceMaterial = "Pine";
+                    break;
+            }
+
+            return MaterialType = surfaceMaterial;
+        }
+
         /// <summary>
         /// Calculates the drawer cost based on how
         /// many drawers ordered.
         /// </summary>
         /// <param name="drawer"></param>
-        /// <returns>Drawer Cost.</returns>
+        /// <returns>DrawerCost Cost.</returns>
         public double CalcDrawerCost(int drawer)
         {
             deskData.DeskDrawer = drawer;
@@ -114,60 +152,63 @@ namespace MegaDesk
         /// </returns>
         public double CalcAdditionalCost(int rushDays, double area)
         {
+            const string path = @"Utils\rushOrderPrices.txt";
             deskData.DeskArea = (int)area;
+            string[] values = File.ReadAllLines(path);            
 
-            if (rushDays != 14)
-            {
-                if (rushDays == 3)
+                if (rushDays != 14)
                 {
-                    if (area < 1000)
+                    if (rushDays == 3)
                     {
-                        AdditionalCost = 60;
+                        if (area < 1000)
+                        {
+                            AdditionalCost = int.Parse(values[0]);//$ 60.00 Additonal Cost
+                        }
+                        else if (area < 2000)
+                        {
+                            AdditionalCost = int.Parse(values[1]);//$ 70.00 Additonal Cost
+                        }
+                        else
+                        {
+                            AdditionalCost = int.Parse(values[2]); ;//$ 80.00 Additonal Cost
+                        }
                     }
-                    else if (area < 2000)
+                    else if (rushDays == 5)
                     {
-                        AdditionalCost = 70;
+                        if (area < 1000)
+                        {
+                            AdditionalCost = int.Parse(values[3]);//$ 40.00 Additonal Cost
+                        }
+                        else if (area < 2000)
+                        {
+                            AdditionalCost = int.Parse(values[4]);//$ 50.00 Additonal Cost
+                        }
+                        else
+                        {
+                            AdditionalCost = int.Parse(values[5]);//$ 60.00 Additonal Cost
+                        }
                     }
-                    else
+                    else if (rushDays == 7)
                     {
-                        AdditionalCost = 80;
+                        if (area < 1000)
+                        {
+                            AdditionalCost = int.Parse(values[6]);//$ 30.00 Additonal Cost
+                        }
+                        else if (area < 2000)
+                        {
+                            AdditionalCost = int.Parse(values[7]);//$ 35.00 Additonal Cost
+                        }
+                        else
+                        {
+                            AdditionalCost = int.Parse(values[8]);//$ 40.00 Additonal Cost
+                        }
                     }
                 }
-                else if (rushDays == 5)
+
+                else
                 {
-                    if (area < 1000)
-                    {
-                        AdditionalCost = 40;
-                    }
-                    else if (area < 2000)
-                    {
-                        AdditionalCost = 50;
-                    }
-                    else
-                    {
-                        AdditionalCost = 60;
-                    }
+                    AdditionalCost = 0;
                 }
-                else if (rushDays == 7)
-                {
-                    if (area < 1000)
-                    {
-                        AdditionalCost = 30;
-                    }
-                    else if (area < 2000)
-                    {
-                        AdditionalCost = 35;
-                    }
-                    else
-                    {
-                        AdditionalCost = 40;
-                    }
-                }
-            }
-            else
-            {
-                AdditionalCost = 0;
-            }
 
             return AdditionalCost;
         }
@@ -188,7 +229,7 @@ namespace MegaDesk
             }
             else
             {
-                AreaCost = (area - 1000)  + 200;
+                AreaCost = (area - 1000) + 200;
             }
             return AreaCost;
         }
