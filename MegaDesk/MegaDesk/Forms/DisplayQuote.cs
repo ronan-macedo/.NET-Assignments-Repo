@@ -102,12 +102,18 @@ namespace MegaDesk
         private void btnAdd_Click(object sender, EventArgs e)
         {
             WriteToFile();
-            MessageBox.Show("Quote confirmed!", "Success!");
+            DialogResult result = MessageBox.Show(this, "Quote confirmed! Do you wish create another quote?", "Success!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
 
-            // Return to the Add Quote after the MessageBox
-            AddQuote addQuote = (AddQuote)Tag;
-            addQuote.Show();
-            Close();
+            if (result == DialogResult.Yes)
+            {
+                AddQuote addQuote = (AddQuote)Tag;
+                addQuote.Show();
+                Close();
+            }
+            else if (result == DialogResult.No)
+            {
+                Close();
+            }
         }
 
         /// <summary>
@@ -134,7 +140,7 @@ namespace MegaDesk
                 });
 
                 string jsonWriter = JsonConvert.SerializeObject(info, Formatting.Indented, new JsonSerializerSettings
-                {                    
+                {
                     NullValueHandling = NullValueHandling.Ignore
                 });
 
