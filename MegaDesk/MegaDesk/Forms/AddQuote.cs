@@ -60,7 +60,8 @@ namespace MegaDesk
             DisplayQuote displayQuote = new DisplayQuote(Customer, AreaCost, DrawerCost, MaterialCost, 
                 RushDaysCost, Total, Estimated, MaterialType, DeskWidth, DeskDepth, DeskDrawer);
             displayQuote.Tag = this;
-            displayQuote.Show(this);           
+            displayQuote.Show(this);
+            Hide();
         }
         #endregion
 

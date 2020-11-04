@@ -22,6 +22,7 @@ namespace MegaDesk
             AddQuote addQuote = new AddQuote();
             addQuote.Tag = this;
             addQuote.Show(this);
+            Hide();
         }
 
         private void viewQuotes_Click(object sender, EventArgs e)
@@ -29,6 +30,7 @@ namespace MegaDesk
             ViewAllQuotes viewAll = new ViewAllQuotes();
             viewAll.Tag = this;
             viewAll.Show(this);
+            Hide();
         }
 
         private void searchQuotes_Click(object sender, EventArgs e)
@@ -36,6 +38,7 @@ namespace MegaDesk
             SearchQuotes searchQuotes = new SearchQuotes();
             searchQuotes.Tag = this;
             searchQuotes.Show(this);
+            Hide();
         }
 
         private void exit_Click(object sender, EventArgs e)

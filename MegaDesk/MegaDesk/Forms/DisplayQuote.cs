@@ -102,18 +102,11 @@ namespace MegaDesk
         private void btnAdd_Click(object sender, EventArgs e)
         {
             WriteToFile();
-            DialogResult result = MessageBox.Show(this, "Quote confirmed! Do you wish create another quote?", "Success!", MessageBoxButtons.YesNo, MessageBoxIcon.Question);
+            DialogResult result = MessageBox.Show(this, "Quote confirmed!", "Success!");
 
-            if (result == DialogResult.Yes)
-            {
-                AddQuote addQuote = (AddQuote)Tag;
-                addQuote.Show();
-                Close();
-            }
-            else if (result == DialogResult.No)
-            {
-                Close();
-            }
+            AddQuote addQuote = (AddQuote)Tag;
+            addQuote.Show();
+            Close();
         }
 
         /// <summary>
