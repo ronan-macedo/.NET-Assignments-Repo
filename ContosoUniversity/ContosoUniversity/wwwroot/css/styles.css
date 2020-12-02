@@ -1,0 +1,112 @@
+﻿body {
+    font-family: 'Castoro', serif;
+}
+
+/*logo styles*/
+header {
+    background-color: #354649;
+}
+
+    header nav {
+        background-color: #6C7A89;        
+    }
+
+        header nav .nav-bar {
+            padding: 0;
+            margin-top: 0;
+            margin-bottom: 0;
+        }
+
+        header nav .navbar-brand, .nav-link {
+            color: #ffffff;
+        }
+
+        header nav a:hover {
+            color: #E0E7E9;
+        }
+
+.logo-header {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 1em 0 1em 0;
+}
+
+    .logo-header .logo-img {
+        margin-right: .5em;
+    }
+
+        .logo-header .logo-img img {
+            width: 200px;
+        }
+
+    .logo-header .logo-text {
+        color: #ffffff;
+        font-family: 'Graduate', cursive;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+@media(max-width: 768px) {
+
+    .logo-header .logo-img img {
+        width: 100px;
+    }
+
+    .logo-header .logo-text h1 {
+        font-size: 1em;
+    }
+}
+
+/*students, instructors, courses, department styles */
+.table tr:nth-child(even) {
+    background-color: #E0E7E9;
+}
+
+.table thead {
+    background-color: #A3C6C4;
+}
+
+/*home page styles*/
+.header {
+    display: block;
+    color: #ffffff;
+    border-radius: 1em;
+    background-color: #354649;
+    margin: 0 1em 0 1em;
+    padding: 1em 0 1em 0;
+}
+
+    .header h1 {
+        text-align: center;
+        font-family: 'Graduate', cursive;
+    }
+
+.container {
+    display: flex;
+    flex-direction: row;
+}
+
+.container #home {
+    margin-bottom: 2em;
+    margin-top: 1.5em;
+}
+
+    .container img {
+        border-radius: 1em;
+        width: 30%;
+    }
+
+    .container .text-container {
+        margin-right: 1em;
+        text-align: justify;
+    }
+
+@media(max-width: 768px) {
+
+    .container img {
+        display: none;
+    }
+}
